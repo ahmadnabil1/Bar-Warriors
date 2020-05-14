@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+{% block body %}
+<style>
+    .container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    }
+    .your-cart{
+        background: #f8f9fa;
+        border-top: 1px solid rgba(0,0,0,.1);
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+    .badge-secondary{
+        background-color:#3e3b3b;
+    }
+    .reset-button-style:focus{
+        outline:none;
+    }
+    .cart_down-transform {
+        transform: rotate(180deg);
+        transition : 0.5s;
+    }
+    .select-wrapper {
+        display:grid;
+        grid-template-rows:0.5fr 1fr
+    }
+    .your-cart-number {
+    display: inline-block;
+    padding: .35em .5em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.5rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    position:absolute;
+    top:0px;
+    background-color: rgb(124, 124, 125);
+    color:white;
+    }
+    .your-cart-number-right {
+    display: inline-block;
+    padding: .35em .5em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.5rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    position:absolute;
+    top:0px;
+    right:6.65rem;
+    background-color: rgb(124, 124, 125);
+    color:white;
+    }
+</style>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <button id="checkout_cart" class="w-100 reset-button-style your-cart rounded d-flex justify-content-between align-items-center py-3 mt-4">
+                <h5 class="reset-margin">
+                    <i class="fab fa-opencart"></i>
+                    <span class="lang" key="your-cart">Your Cart</span>
+                    <div id="your-cart-number" class="ml-2 badge badge-secondary"></div>
+                </h5>
+                <i id="cart_down" class="fas fa-angle-double-down"></i>
+            </button>
+        </div>
+    </div>
+    <div class="row mt-2" id="your_cart">
+    </div>
+    <hr class="reset-margin mb-3">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h5 class="reset-margin mb-3 d-flex lang" key="shipping">Shipping Address</h5>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <input type="text" class="form-control mb-3" placeholder="First Name">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <input type="text" class="form-control mb-3" placeholder="Last Name">
+        </div>
+        <div class="col-12">
+            <input type="text" class="form-control mb-3" placeholder="Address">
+            <input type="text" class="form-control mb-3" placeholder="Apartment, suite, etc. (optional)">
+        </div>
+        <div class="col-6 mb-3">
+            <div class="d-flex flex-column">
+                <h6 class="lang d-flex" key="country/region">Country/Region</h6>
+                <select class="form-control"><option class="lang" key="egypt">Egypt</option></select>
+            </div>
+        </div>
+        <div class="col-6 mb-3">
+            <div class="d-flex flex-column">
+                <h6 class="d-flex lang" key="city">City</h6>
+                <select class="form-control">
+                    <option data-alternate-values="[&quot;Al Sharqia&quot;,&quot;Ash Sharqīyah&quot;,&quot;Ash Sharqiyah&quot;]" value="SHR">Al Sharqia</option><option data-alternate-values="[&quot;Alexandria&quot;,&quot;Al Iskandarīyah&quot;,&quot;Al Iskandariyah&quot;]" value="ALX">Alexandria</option>
+                    <option data-alternate-values="[&quot;Aswan&quot;,&quot;Aswān&quot;]" value="ASN">Aswan</option><option data-alternate-values="[&quot;Asyut&quot;,&quot;Asyūţ&quot;]" value="AST">Asyut</option>
+                    <option data-alternate-values="[&quot;Beheira&quot;,&quot;Al Buḩayrah&quot;,&quot;Al Buayrah&quot;]" value="BH">Beheira</option>
+                    <option data-alternate-values="[&quot;Beni Suef&quot;,&quot;Banī Suwayf&quot;,&quot;Bani Suwayf&quot;]" value="BNS">Beni Suef</option>
+                    <option data-alternate-values="[&quot;Cairo&quot;,&quot;Al Qāhirah&quot;,&quot;Al Qahirah&quot;]" value="C">Cairo</option>
+                    <option data-alternate-values="[&quot;Dakahlia&quot;,&quot;Ad Daqahlīyah&quot;,&quot;Ad Daqahliyah&quot;]" value="DK">Dakahlia</option>
+                    <option data-alternate-values="[&quot;Damietta&quot;,&quot;Dumyāţ&quot;,&quot;Dumyat&quot;]" value="DT">Damietta</option>
+                    <option data-alternate-values="[&quot;Faiyum&quot;,&quot;Al Fayyūm&quot;,&quot;Al Fayyum&quot;]" value="FYM">Faiyum</option>
+                    <option data-alternate-values="[&quot;Gharbia&quot;,&quot;Al Gharbīyah&quot;,&quot;Al Gharbiyah&quot;]" value="GH">Gharbia</option>
+                    <option data-alternate-values="[&quot;Giza&quot;,&quot;Al Jīzah&quot;,&quot;Al Jizah&quot;]" value="GZ">Giza</option>
+                    <option data-alternate-values="[&quot;Helwan&quot;,&quot;Ḩulwān&quot;,&quot;ulwan&quot;]" value="HU">Helwan</option>
+                    <option data-alternate-values="[&quot;Ismailia&quot;,&quot;Al Ismāٰīlīyah&quot;,&quot;Al Ismailiyah&quot;]" value="IS">Ismailia</option
+                    ><option data-alternate-values="[&quot;Kafr el-Sheikh&quot;,&quot;Kafr ash Shaykh&quot;]" value="KFS">Kafr el-Sheikh</option>
+                    <option data-alternate-values="[&quot;Luxor&quot;,&quot;Al Uqşur&quot;,&quot;Al Uqsur&quot;]" value="LX">Luxor</option>
+                    <option data-alternate-values="[&quot;Matrouh&quot;,&quot;Maţrūḩ&quot;,&quot;Matru&quot;]" value="MT">Matrouh</option>
+                    <option data-alternate-values="[&quot;Minya&quot;,&quot;Al Minyā&quot;,&quot;Al Minya&quot;]" value="MN">Minya</option>
+                    <option data-alternate-values="[&quot;Monufia&quot;,&quot;Al Minūfīyah&quot;,&quot;Al Minufiyah&quot;]" value="MNF">Monufia</option>
+                    <option data-alternate-values="[&quot;New Valley&quot;,&quot;Al Wādī al Jadīd&quot;,&quot;Al Wadi al Jadid&quot;]" value="WAD">New Valley</option>
+                    <option data-alternate-values="[&quot;North Sinai&quot;,&quot;Shamāl Sīnā&quot;,&quot;Shamal Sina&quot;]" value="SIN">North Sinai</option>
+                    <option data-alternate-values="[&quot;Port Said&quot;,&quot;Būr Saٰīd&quot;,&quot;Bur Said&quot;]" value="PTS">Port Said</option
+                    ><option data-alternate-values="[&quot;Qalyubia&quot;,&quot;Al Qalyūbīyah&quot;,&quot;Al Qalyubiyah&quot;]" value="KB">Qalyubia</option>
+                    <option data-alternate-values="[&quot;Qena&quot;,&quot;Qinā&quot;,&quot;Qina&quot;]" value="KN">Qena</option>
+                    <option data-alternate-values="[&quot;Red Sea&quot;,&quot;Al Baḩr al Aḩmar&quot;,&quot;Al Bar al Amar&quot;]" value="BA">Red Sea</option>
+                    <option data-alternate-values="[&quot;Sohag&quot;,&quot;Sūhāj&quot;,&quot;Suhaj&quot;]" value="SHG">Sohag</option>
+                    <option data-alternate-values="[&quot;South Sinai&quot;,&quot;Janūb Sīnā&quot;,&quot;Janub Sina&quot;]" value="JS">South Sinai</option>
+                    <option data-alternate-values="[&quot;Suez&quot;,&quot;As Suways&quot;]" value="SUZ">Suez</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+            <input type="number" placeholder="Phone" class="form-control">
+        </div>
+        <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+            <button class="btn btn-primary w-100 lang" key="confirm-order">Confirm Order</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

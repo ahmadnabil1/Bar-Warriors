@@ -1,0 +1,85 @@
+.reset-style {
+  border: none;
+  color: inherit;
+  background-color: transparent;
+}
+.reset-button-style {
+    border: none;
+    background-color: transparent;
+}
+.reset-style2 {
+    color: inherit;
+    background-color: transparent;
+    outline:none;
+    border: 0.5px solid grey;
+}
+.wrapper {
+    display:grid;
+    grid-template-rows: 0.8fr 7fr 1.6fr;
+    grid-gap: 1rem;
+    height:100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    padding:1rem 1rem;
+    z-index: 100;
+    background-color:#f8f9fa;
+    width: 35vw;
+}
+
+.first {
+    border-bottom: 0.5px solid black;
+}
+.reset-margin {
+    margin:0px;
+}
+.reset-style2:focus{
+    outline:none;
+}
+.input-style {
+    border-top: 0.5px solid grey;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.5px solid grey;
+}
+.navbar {
+    z-index:98;
+}
+input {
+    background-color:inherit;
+    color:white;
+    border-top: 0.5px solid grey;
+    border-bottom: 0.5px solid grey;
+    border-right:none;
+    border-left:none;
+}
+.third {
+    border-top: 0.5px solid black;
+}
+.btn-primary {
+    border:white;
+    background-color: #f13a11;
+    color:white;
+}
+.btn-primary:hover {
+    background-color: red;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+ Firefox
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.number-price {
+    display: flex;
+}
+.item-number {
+    display:flex;
+}
+.before-submit {
+    margin-bottom:1.5rem;
+}

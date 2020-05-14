@@ -1,0 +1,35 @@
+/*-----------------------------------
+       Arabic Translation Style
+-------------------------------------*/
+.image-space {
+    margin-right:1rem;
+}
+.translated .image-space {
+    margin-right:0;
+    margin-left:1rem;
+}
+.checkout-price {
+    margin-left:auto;
+}
+.translated .checkout-price {
+    margin-left:0;
+    margin-right:auto;
+}
+.translated .slider:before {
+  left: 33px;
+}
+.translated input:checked + .slider:before {
+  transform: translateX(-30px);
+}
+.translated .fa-opencart {
+    transform: scaleX(-1);
+}
+ul {
+    padding-right: 0px;
+}
+.translated .navbar-brand {
+    order:1;
+}
+.navbar-brand {
+    margin-right:0px;
+}

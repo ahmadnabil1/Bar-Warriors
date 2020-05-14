@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- SHOP -->
+<div class="container-fluid">
+    <div class="row">
+    	{% for row in rows %}
+    	<!-- Product No.{{row['id']}} -->
+		<div class="col-sm-12 col-md-12 col-lg-6 pt-2">
+			<div data-aos="zoom-in-down">
+				<!-- Carousel Images & Slides -->
+				<div id="product{{ row["id"] }}" class="carousel slide" data-ride="carousel">
+					<ul class="carousel-indicators">
+		                <li data-target="#product{{ row["id"] }}" data-slide-to="0"></li>
+		                <li data-target="#product{{ row["id"] }}" data-slide-to="1"></li>
+		                <li data-target="#product{{ row["id"] }}" data-slide-to="2"></li>
+		            </ul>
+					<div class="carousel-inner rounded">
+					<div class="carousel-item active">
+						<img src="static/img/{{row['img']}}.jpg" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item">
+						<img src="static/img/{{row['img']}}2.jpg" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item">
+						<img src="static/img/{{row['img']}}3.jpg" class="d-block w-100" alt="...">
+					</div>
+					</div>
+				</div>
+				{% if row['discount'] != 0 %}
+				<span class="status">{{row['discount']}}%</span>
+				{% endif %}
+				<!--  Product No.{{row['id']}} Info -->
+				<div>
+					<p class="bold mt-2 lang d-flex" key="{{row["name_en"]}}">{{ row["name_en"] }}</p>
+					<div class="mb-2 d-flex justify-content-between">
+						<div class="price" dir="ltr">
+							{% if row['old_price'] != 0 %}
+							<span class="old-price mr-1">{{row['old_price']}}.00 L.E</span>
+							{% endif %}
+							<span class="mr-auto">{{ row["new_price"] }}.00 L.E</span>
+						</div>
+						<button id="cart_icon" class="d-flex align-items-center reset-style" value="{{row['id']}}" onclick="dothis({{row}},event)">
+							<span class="add-to-cart lang" key="add-to-cart">ADD TO CART</span>
+							<i class="ml-1 fab fa-opencart"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<!-- CART -->
+<div>
+	<div class="cart-background"></div>
+	<div id="cart" class="wrapper">
+		<!-- First Item -->
+	    <div class="first d-flex justify-content-between align-items-center">
+	        <h2 class="reset-margin lang" key="cart">CART</h2>
+	        <button id="cart_exit" onclick="carthide()" class="reset-style"><i class="fas fa-times close-icon"></i></button>
+	    </div>
+	    <!-- Second Item -->
+	    <div id="cart_main" class="second">
+
+		</div>
+		<!-- Third Item -->
+		<div class="third">
+			<div id="subtotal" class="d-flex justify-content-between">
+			    <p class="lang" key="subtotal">SUBTOTAL</p>
+			    <p class="subtotal" dir="ltr"></p>
+			</div>
+			<p class="before-submit d-flex lang" key="taxes">Shipping calculated at checkout.</p>
+			<a href="/checkout" class="btn btn-primary w-100 lang" name="checkout" key="checkout">Checkout</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

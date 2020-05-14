@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="center-login">
+    <div class="login-wrapper">
+        <!-- Image -->
+        <div id="item1" class="my-logo">
+            <img class="img-fluid" src="static/img/spartan.png">
+            <!--<img class="img-fluid" src="https://colorlib.com/etc/lf/Login_v1/images/img-01.png">-->
+        </div>
+        <div id="item2">
+            <!-- Buttons -->
+            <div class="login-grid mb-4">
+                <button id="login_btn" class="reset-button-style login-active p-2"><h2>Log in</h2></button>
+                <button id="signup_btn" class="reset-button-style signup-inactive p-2"><h2>Sign Up</h2></button>
+            </div>
+            <!-- Login -->
+            <form action="/login" method="post" id="login_form" class="needs-validation mb-3" novalidate>
+                <div class="input-icons">
+                    <i class="fas fa-envelope icon"></i>
+                    <input class="input-field form-control" type="email" placeholder="Email" name="login-email" required>
+                </div>
+                <div class="input-icons">
+                    <i class="fas fa-lock icon"></i>
+                    <input class="input-field form-control" type="password" placeholder="Password" name="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+            <!-- Sign Up -->
+            <form action="/login" method="post" id="signup_form" class="needs-validation mb-3" novalidate>
+                <input type="hidden" name="signup_form" value="signup_form">
+                <div class="input-icons">
+                    <i class="fas fa-envelope icon"></i>
+                    <input class="input-field form-control" type="email" placeholder="Email" name="signup-email" required>
+                </div>
+                <div class="input-icons">
+                    <i class="fas fa-lock icon"></i>
+                    <input class="input-field form-control" type="password" placeholder="Password" name="signup-password" required>
+                </div>
+                <div class="input-icons">
+                    <i class="fas fa-lock icon"></i>
+                    <input class="input-field form-control" type="password" placeholder="Confirm Password" name="signup-confirm-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

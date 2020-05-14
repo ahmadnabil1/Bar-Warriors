@@ -1,0 +1,119 @@
+:root {
+    --light-bg: #f8f9fa;
+    --light-color: rgba(0,0,0,.5);
+    --dark-bg: #121212;
+    --dark-blue-color: #f13a11;
+}
+/*------------------------
+        General
+------------------------*/
+
+.active
+{
+    color:var(--dark-blue-color);
+}
+.dark select {
+    background-color:var(--dark-bg);
+    color: #777777;
+}
+.dark select:focus {
+    background-color:var(--dark-bg);
+    color: rgba(255,255,255,0.8);
+}
+.dark option {
+    color: rgba(255,255,255,0.8);
+}
+.dark .form-control:focus {
+    color:rgba(255,255,255,0.8);
+}
+
+/*------------------------
+        Light Mode
+------------------------*/
+body {
+    background-color:white;
+    color: black;
+}
+#my-icons {
+    background-color: #eeeeee;
+}
+#my-name {
+    background-color:#e0e0e0;
+}
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: red;
+}
+
+/*------------------------
+        Dark Mode
+------------------------*/
+body.dark {
+    background-color: var(--dark-bg);
+    color:white;
+}
+.dark a, .dark p, .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6, dark hr {
+    opacity:0.87;
+}
+.dark input, .dark textarea {
+    background-color: var(--dark-bg);
+}
+.dark input:focus, .dark textarea:focus {
+    background-color: var(--dark-bg);
+}
+.dark .btn-primary {
+    border:white;
+    background-color: var(--dark-blue-color);
+    color:white;
+}
+.dark .btn-primary:hover {
+    background-color: red;
+}
+.dark .reset-button-style {
+    color:white;
+}
+.dark .login-inactive {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+.dark .signup-inactive {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+.dark .btn-primary:not(:disabled):not(.disabled):active {
+    background-color: red;
+}
+dark .form-control {
+    opacity:0.87;
+}
+.dark hr {
+    border: 0.5px solid white;
+}
+.dark .line {
+    border: 0.5px solid white;
+}
+.dark #my-icons {
+    background-color: #212121;
+}
+.dark #my-name {
+    background-color:black;
+}
+.dark .wrapper {
+    background-color:black;
+    color:white;
+}
+.dark .first {
+    border-bottom: 0.5px solid white;
+}
+.dark .third {
+    border-top: 0.5px solid white;
+}
+.navbar-dark .navbar-nav .nav-link.active
+{
+    color: var(--dark-blue-color);
+}
+.dark .your-cart{
+    background: #0d0d0d;
+    border-top: 1px solid #202020;
+    border-bottom: 1px solid #202020;
+}
+.dark .your-cart-number {
+    background-color: rgba(114,114,114,0.9);
+}
